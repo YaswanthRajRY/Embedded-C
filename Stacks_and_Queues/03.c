@@ -38,7 +38,7 @@ int main()
 
     initStack(&Stack);
 
-    char s[] = "{cmd{cmd()}}";
+    char s[] = "{{()}}";
     char* s_ptr = s;
     int depth = 0;
 
