@@ -15,18 +15,18 @@ int main()
     int len = strlen(str);
     int i,j,count;
 
-    for(i=0; i<len; i++)
+    for(i=0; i<len; i++) // first iteration 
     {
         count = 0;
-        for(j=0; j<len; j++)
+        for(j=0; j<len; j++) // second iteration
         {
-            if(str[i] == str[j] && i != j)
+            if(str[i] == str[j] && i != j) // check char in first iteration is equal to second iteration and condition to avoid compare same index 
             {
-                count = 1;
+                count = 1; // increment count value
                 break;
             }
         }
-        if(count == 0)
+        if(count == 0) 
         {
             printf("%c",str[i]);
             break;
