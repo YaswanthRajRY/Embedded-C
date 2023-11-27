@@ -16,16 +16,17 @@ int main()
     int i,j;
     int count[256] = {0};
 
-    for (i=0; i<len; i++)
+    for (i=0; i<len; i++) 
     {
-        count[str[i]]++;
+        count[str[i]]++; // record frequenct of each char
     }
     for (i=0; i<len; i++)
     {
-        if(count[str[i]] > 1)
+        if(count[str[i]] > 1) 
         {
             printf("%c %d",str[i],count[str[i]]);
             count[str[i]] = 0;
+            printf("\n");
         }
     }
 
