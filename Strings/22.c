@@ -14,11 +14,11 @@ void encodeStr(char* str, int len)
 {
     int i;
 
-    for (i=0; i<len; i++)
+    for (i=0; i<len; i++) // iterate each char in the string
     {
-        if (str[i] >= 'a' && str[i] <= 'z')
+        if (str[i] >= 'a' && str[i] <= 'z') // check if char is in the range of 'a' - 'z' in ASICll code
         {
-            str[i] = (str[i] - 'a' + len) % 26 + 'a';
+            str[i] = (str[i] - 'a' + len) % 26 + 'a'; // increase the index of char by value 3 
         }
         else if (str[i] >= 'A' && str[i] <= 'Z')
         {
