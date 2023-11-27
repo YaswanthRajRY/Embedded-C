@@ -17,23 +17,23 @@ int main()
     char s[len];
     int i,j=0,bol=1;
 
-    for(i=0; i<len; i++)
+    for(i=0; i<len; i++) // loop to iterate string
     {
-        if(str[i] == '(' || str[i] == '[' || str[i] == '{')
+        if(str[i] == '(' || str[i] == '[' || str[i] == '{') 
         {
-            s[j++] = str[i];
+            s[j++] = str[i]; // copy char to s
         }
         if(str[i] == ')' || str[i] == ']' || str[i] == '}')
         {
-            char res = s[--j];
-            if(str[i] == ')' && res != '(' || str[i] == ']' && res != '[' || str[i] == '}' && res != '{')
+            char res = s[--j]; // copy last updated char to res
+            if(str[i] == ')' && res != '(' || str[i] == ']' && res != '[' || str[i] == '}' && res != '{') 
             {
                 bol = 0;
                 break;
             }
         }
     }
-    (bol > 0) ? printf("True") : printf("False");
+    (bol > 0) ? printf("True") : printf("False"); 
 
     return 0;
 }
