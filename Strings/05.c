@@ -11,9 +11,9 @@ WTD: Determine if all characters in the provided string are numeric digits.
 
 void onlydigitInstring(char* strptr)
 {
-    while(*strptr != '\0')
+    while(*strptr != '\0') // iterating each char in string untill null char
     {
-        if(*strptr < '0' && *strptr > '9')
+        if(*strptr < '0' && *strptr > '9') // condition to check char out of range 0-9 in ASICll code
         {
             printf("False");
             break;
