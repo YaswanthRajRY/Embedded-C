@@ -12,19 +12,19 @@ more than once.
 
 void findDuplicate(char* str)
 {
-    int s[256] = {0};
+    int s[256] = {0}; // creating hash table for character
 
-    while (*str != '\0')
+    while (*str != '\0') // iterating each character in string untill null character
     {
-        s[*str]++;
-        str++;
+        s[*str]++; // Increment the count for the current character in the array (ex: a ASICII code is 97, at index 97 in the array is incremented)
+        str++; // move to next character in the string
     }    
     
-    for (int i=0; i<256; i++)
+    for (int i=0; i<256; i++) // iterating the array
     {
-        if (s[i] > 1)
+        if (s[i] > 1) // check element in the array is greater than 1. (ex: if a repeates in the string more than 1 time, then at index 97 the value is 2)
         {
-            printf("%c ", i);
+            printf("%c ", i); // print character which is repeted more than once
         }
     }
 }
