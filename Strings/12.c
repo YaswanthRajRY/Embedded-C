@@ -12,9 +12,9 @@ WTD: Ascertain if the provided string reads the same forwards and backwards.
 int palindrome(char* str, int l)
 {
     int i,j;
-    for (i=0, j=l-1; i<j; i++, j--)
+    for (i=0, j=l-1; i<j; i++, j--) // compare first char and last char
     {
-        if(str[i] != str[j])
+        if(str[i] != str[j]) // return 0 if char is not equal
         {
             return 0;
         }
