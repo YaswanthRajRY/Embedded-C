@@ -14,13 +14,12 @@ void countSubstring(const char* str, int len)
 {
     int count = 0;
     int i,j;
-    
-    //even 00's in an string    
-    for (i=0; i<len; i++)
+        
+    for (i=0; i<len; i++) // loop to iterate each char in string
     {
         int zero = 0;
         int one = 0;
-        for (j=i; j<len; j++)
+        for (j=i; j<len; j++) // second iteration from ith position
         {
             if (str[j] == '0')
             {
