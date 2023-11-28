@@ -16,32 +16,32 @@ typedef struct {
     int bit;
 } Stack;
 
-void initStack(Stack* stack)
+void initStack(Stack* stack) // initializing stack starting values
 {
     stack->bit = 0;
     stack->top = 0;
     stack->data[stack->top] = 0;
 }
 
-void push(Stack* stack, unsigned int value) 
+void push(Stack* stack, unsigned int value) // push value into stack
 {
-    if (stack->top > 2)
+    if (stack->top > STACK_SIZE) 
     {
         printf("Stack is full\n");
         return;
     }    
-    if (stack->bit == 4)
+    if (stack->bit == 4) // incrementing stack pointer to next location when content has 32bit data
     {
         stack->top++;
         stack->bit = 0;
         stack->data[stack->top] = 0;
     }  
-    value <<= (stack->bit * 8);
-    stack->data[stack->top] |= value;
-    stack->bit++; 
+    value <<= (stack->bit * 8); // shifting data by 8 bits
+    stack->data[stack->top] |= value; 
+    stack->bit++;  // increment bit to keep track of content bit size
 }
 
-void pop(Stack* stack)
+void pop(Stack* stack) // pop data in stack
 {
     if (stack->top < 0)
     {
