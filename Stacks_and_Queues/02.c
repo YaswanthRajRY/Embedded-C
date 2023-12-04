@@ -12,7 +12,7 @@ FIFO manner.
 
 typedef struct Stack
 {
-    char** str;
+    char** str;    
     int top;
     int end;
 }stack;
@@ -21,13 +21,13 @@ void initStack(stack* stack)
 {
     stack->top = 0; 
     stack->end = 0;
-    stack->str = malloc(sizeof(char*) * 10);
+    stack->str = malloc(sizeof(char*) * 10);     // allocate memory for struct
 }
 
 void push(stack* Stack, char* str)
 {
-    Stack->str[Stack->end] = malloc(sizeof(char) * 10);
-    strcpy(Stack->str[Stack->end++], str);
+    Stack->str[Stack->end] = malloc(sizeof(char) * 10);    // allocate memory to store string 
+    strcpy(Stack->str[Stack->end++], str);     // Copy string to stack and increment the stack pointer
 }
 
 void pop(stack* Stack)
@@ -37,8 +37,8 @@ void pop(stack* Stack)
         printf("Stack is empty\n");
         return;
     }
-    printf("pop: %s\n", Stack->str[Stack->top]);
-    free(Stack->str[Stack->top++]);
+    printf("pop: %s\n", Stack->str[Stack->top]); 
+    free(Stack->str[Stack->top++]);     // free memory of poped string from the stack
 }
 
 int main()
