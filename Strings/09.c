@@ -12,7 +12,7 @@ they are anagrams.
 
 int anagram(char* str1, char* str2)
 {
-    if (strlen(str1) != strlen(str2))
+    if (strlen(str1) != strlen(str2)) // return if string is not equal
     {
         return 0;
     }
@@ -22,13 +22,13 @@ int anagram(char* str1, char* str2)
 
     for (i=0; i<strlen(str1); i++)
     {
-        count1[str1[i]]++;
-        count2[str2[i]]++;
+        count1[str1[i]]++; // count frequency of char in string 1
+        count2[str2[i]]++; // count frequency of char in string 2
     }
 
     for (i=0; i<256; i++)
     {
-        if(count1[i] != count2[i])
+        if(count1[i] != count2[i]) 
         {
             return 0;
         }

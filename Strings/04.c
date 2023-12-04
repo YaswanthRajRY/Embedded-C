@@ -16,12 +16,12 @@ void longestPalindrome(char str[])
     int start = 0;
     int maxlen = 1;
     int i;
-    for(i=0; i<ln; i++)
+    for(i=0; i<ln; i++) // loop until length of input string
     {
-        int left=i,right=i;
-        while(left >= 0 && right < ln && str[left] == str[right])
+        int left=i,right=i; 
+        while(left >= 0 && right < ln && str[left] == str[right]) // 
         {
-            if(right - left > maxlen)
+            if(right - left > maxlen) // check maximum length of the substring
             {
                 maxlen = right - left + 1;
                 start = left;
@@ -32,7 +32,7 @@ void longestPalindrome(char str[])
         }
     }
 
-    for(i=0; i<maxlen; i++)
+    for(i=start; i<maxlen; i++) 
     {
         printf("%c",str[start++]);
     }

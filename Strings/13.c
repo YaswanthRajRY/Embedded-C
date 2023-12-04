@@ -16,11 +16,11 @@ int main()
     int i;
     int vowels=0;
 
-    for (i=0; i<len; i++)
+    for (i=0; i<len; i++) // iterate each char in string
     {
-        if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u')
+        if(str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u') // check for vowels
         {
-            vowels++;
+            vowels++; // increment value
         }
     }
 

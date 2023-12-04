@@ -16,17 +16,17 @@ void subStringCount(char* str, char* subStr)
     int i,j;
     int count=0;
 
-    for (i=0; i<=len1-len2; i++)
+    for (i=0; i<=len1-len2; i++) // loop to compare substring with main string
     {   
         int flag = 1;
-        for (j=0; j<len2; j++)
+        for (j=0; j<len2; j++) // iterate main string
         {
-            if (subStr[j] != str[j+i])
+            if (subStr[j] != str[j+i]) // compare the substring and main string
             {
                 flag = 0;
             }
         }
-        if(flag == 1)
+        if(flag == 1) // if equal increment count
         {
             count++;
         }

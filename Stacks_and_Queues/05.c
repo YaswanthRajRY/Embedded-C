@@ -10,18 +10,18 @@ or other purposes.
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct node
+typedef struct node // creating struct for list
 {
     char data;
     struct node* next;
 }Node;
 
-typedef struct 
+typedef struct // creating struct to point node in the list
 {
     Node* top;
 }Stack;
 
-Node* createNode(char data)
+Node* createNode(char data) // creating node
 {
     Node* tempNode = (Node*)malloc(sizeof(Node));
     tempNode->data = data;
@@ -32,38 +32,38 @@ Node* createNode(char data)
 
 void initStack(Stack** stack_ref)
 {
-    *stack_ref = (Stack*)malloc(sizeof(Stack));
-    (*stack_ref)->top = NULL;
+    *stack_ref = (Stack*)malloc(sizeof(Stack)); // allocate memory for Stack struct
+    (*stack_ref)->top = NULL; // initialize null to allocated memory
 }
 
 void push(Stack** stack_ref, char data)
 {
     Stack* stack = *stack_ref;
-    Node* temp = createNode(data);
-    if (stack->top == NULL)
+    Node* temp = createNode(data); // create and copy new node to temp
+    if (stack->top == NULL) // if stack is empty
     {
-        stack->top = temp;
+        stack->top = temp; 
     }
-    else 
+    else // if stack is not empty
     {
-        temp->next = stack->top;
-        stack->top = temp;
+        temp->next = stack->top; // insert new node at end
+        stack->top = temp; // move top pointer to inserted new node
     }
 }
 
 char pop(Stack** stack_ref)
 {
     Stack* stack = *stack_ref;
-    if (stack->top == NULL)
+    if (stack->top == NULL) // return if stack is empty
     {
         printf("Stack is empty\n");
         return 0;
     }
     
     char s = stack->top->data;
-    Node* temp = stack->top;
-    stack->top = stack->top->next;
-    free(temp);
+    Node* temp = stack->top; // create temp node poining top node
+    stack->top = stack->top->next; // move top to next node
+    free(temp); // release temp node
 
     return s;
 }
@@ -76,22 +76,22 @@ int main()
     char* str_ptr = str;
     int depth = 0;
 
-    while (*str_ptr != '\0')
+    while (*str_ptr != '\0') // iterating each char in string
     {
-        if (*str_ptr == '{' || *str_ptr == '(' || *str_ptr == '[')
+        if (*str_ptr == '{' || *str_ptr == '(' || *str_ptr == '[') // do push operation if open braces encountered
         {
             push(&stack, *str_ptr);
         }
-        else if (*str_ptr == '}' || *str_ptr == ')' || *str_ptr == ']')
+        else if (*str_ptr == '}' || *str_ptr == ')' || *str_ptr == ']') // if close braces is encountered compare with braces in stack
         {
             char s = pop(&stack);
 
-            if (*str_ptr == '}' && s == '{' || *str_ptr == ']' && s == '[' || *str_ptr == '(' && s == ')')
+            if (*str_ptr == '}' && s == '{' || *str_ptr == ']' && s == '[' || *str_ptr == '(' && s == ')') // compare and increment depth if braces is correct
             {
                 depth++;
             }
         }
-        str_ptr++;
+        str_ptr++; // move to next char in the string
     }
     printf("Depth: %d",depth);
 

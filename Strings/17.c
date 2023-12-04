@@ -18,11 +18,11 @@ bool stringInterleaving(char *str1, char* str2, char* str3)
     int len3 = strlen(str3);
     int i,j=0,k=0;
 
-    if (len1 + len2 != len3) return false;
+    if (len1 + len2 != len3) return false; // return if length of sting 1 + string 2 is not equal to string of 3
 
-    for (i=0; i<len3; i++)
+    for (i=0; i<len3; i++) // loop to compare each char in string 3 with string 1 char and string 2 char
     {
-        if (i%2 == 0)
+        if (i%2 == 0) 
         {
             if(str3[i] != str1[j])
             {

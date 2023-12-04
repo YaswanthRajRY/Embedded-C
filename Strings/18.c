@@ -20,10 +20,10 @@ void longestSubstring(char* str)
     {
         int next = i;
         int charCount[256]={0};
-        while (next < len && charCount[str[next]] == 0)
+        while (next < len && charCount[str[next]] == 0) // find substring 
         {
-            charCount[str[next]]++;
-            if(next - i + 1 > maxlen)
+            charCount[str[next]]++; // count frequenct of each char
+            if(next - i + 1 > maxlen) // update maximum sub string
             {
                 maxlen = next - i + 1;
             }
