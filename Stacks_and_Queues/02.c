@@ -24,20 +24,20 @@ void initStack(stack* stack)
     stack->str = malloc(sizeof(char*) * 10);
 }
 
-void enStack(stack* Stack, char* str)
+void push(stack* Stack, char* str)
 {
     Stack->str[Stack->end] = malloc(sizeof(char) * 10);
     strcpy(Stack->str[Stack->end++], str);
 }
 
-void deStack(stack* Stack)
+void pop(stack* Stack)
 {
     if (Stack->top == Stack->end)
     {
-        printf("End of stack\n");
+        printf("Stack is empty\n");
         return;
     }
-    printf("Destack: %s\n", Stack->str[Stack->top]);
+    printf("pop: %s\n", Stack->str[Stack->top]);
     free(Stack->str[Stack->top++]);
 }
 
@@ -47,14 +47,14 @@ int main()
 
     initStack(&Stack);
 
-    enStack(&Stack, "Hello");
-    enStack(&Stack, "World");
-    enStack(&Stack, "Bye!");
+    push(&Stack, "Hello");
+    push(&Stack, "World");
+    push(&Stack, "Bye!");
 
-    deStack(&Stack);
-    deStack(&Stack);
-    deStack(&Stack);
-    deStack(&Stack);
+    pop(&Stack);
+    pop(&Stack);
+    pop(&Stack);
+    pop(&Stack);
 
     return 0;
 }
