@@ -12,22 +12,22 @@ FIFO manner.
 
 typedef struct Stack
 {
-    char** str;    
+    char** str;
     int top;
     int end;
 }stack;
 
 void initStack(stack* stack)
 {
-    stack->top = 0; 
+    stack->top = 0;
     stack->end = 0;
-    stack->str = malloc(sizeof(char*) * 10);     // allocate memory for struct
+    stack->str = malloc(sizeof(char*) * 10);    // allocate memory for struct
 }
 
 void push(stack* Stack, char* str)
 {
-    Stack->str[Stack->end] = malloc(sizeof(char) * 10);    // allocate memory to store string 
-    strcpy(Stack->str[Stack->end++], str);     // Copy string to stack and increment the stack pointer
+    Stack->str[Stack->end] = malloc(sizeof(char) * 10);     // allocate memory to store string 
+    strcpy(Stack->str[Stack->end++], str);      // Copy string to stack and increment the stack pointer
 }
 
 void pop(stack* Stack)
