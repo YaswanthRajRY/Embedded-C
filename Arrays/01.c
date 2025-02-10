@@ -8,6 +8,7 @@ any integer that is missing from this sequence.
 */
 #include <stdio.h>
 
+ // Time Complexity: O(n)
 int findMissingNum(int arr[], int size)
 {
     int a = arr[0];

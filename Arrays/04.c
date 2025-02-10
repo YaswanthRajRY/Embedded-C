@@ -10,7 +10,7 @@ pairs matches a specified target number.
 #include <stdio.h>
 #include <stdlib.h>
 
- // Time Complexity: O(n^2)
+/* // Time Complexity: O(n^2)
 int** findPair(int arr[], int size, int target, int* returnSize)
 {
     int** pair = (int**)malloc(sizeof(int*) * size);
@@ -29,6 +29,33 @@ int** findPair(int arr[], int size, int target, int* returnSize)
                 break;
             }
         }
+    }
+
+    return pair;
+}
+*/
+
+ // Time Complexity: O(n)
+int** findPair(int arr[], int size, int target, int* returnSize)
+{
+    int* hash = (int*)calloc(100, sizeof(int));
+    int** pair = (int**)malloc(sizeof(int*) * size);
+    *returnSize = 0;
+
+    for (int i=0; i<size; i++)
+    {
+        int diff = target - arr[i];
+
+        if (hash[diff + 50] > 0)
+        {
+            pair[(*returnSize)] = (int*)malloc(sizeof(int) * 2);
+            pair[(*returnSize)][0] = diff;
+            pair[(*returnSize)][1] = arr[i];
+            hash[diff + 50]--;
+            (*returnSize)++;
+            continue;
+        }
+        hash[arr[i] + 50]++;
     }
 
     return pair;
