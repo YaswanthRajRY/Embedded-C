@@ -9,6 +9,7 @@ number that appears more than half the length of the array.
 
 #include <stdio.h>
 
+ // TimeComplexity: O(n)
 int find_majority_element(int arr[], int n) {
     if (n == 0) return -1;
     
@@ -42,10 +43,13 @@ int main() {
     
     int result = find_majority_element(arr, n);
     
-    if (result != -1) {
-        printf("Majority element is %d\n", result);
-    } else {
-        printf("No majority element found\n");
+    if (result != -1)
+    {
+        printf("Majority element is %d", result);
+    } 
+    else
+    {
+        printf("No majority element found");
     }
     
     return 0;

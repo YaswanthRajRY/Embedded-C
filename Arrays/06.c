@@ -6,7 +6,7 @@ elements in ascending order.
  
 (e.g.: I/P: [64, 34, 25, 12, 22, 11, 90]; O/P: [11, 12, 22, 25, 34, 64, 90] )
 */
-
+// Time Complexity: O(nlogn)
 #include <stdio.h>
 
 void swap(int* a, int* b)

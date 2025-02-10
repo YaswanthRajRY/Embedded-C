@@ -8,11 +8,12 @@ found at the index from the original array specified by the current number.
 */
 #include <stdio.h>
 
+ // Time Complexity: O(n)
 void rearrange(int arr[], int size)
 {
     for (int i=0; i<size; i++)
     {
-        arr[i] += (arr[arr[i]] % 4) * 4;
+        arr[i] += (arr[arr[i]] % size) * size;
     }
 
     for (int i=0; i<size; i++)
@@ -23,7 +24,7 @@ void rearrange(int arr[], int size)
 
 int main()
 {
-    int arr[] = {3, 2, 0, 1};
+    int arr[] = {3, 0, 2, 1};
     int size = sizeof(arr)/sizeof(arr[0]);
 
     rearrange(arr, size);

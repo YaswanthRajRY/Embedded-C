@@ -9,7 +9,9 @@ WTD: Investigate the array and find two numbers that each appear more than once.
 #include <stdio.h>
 #include <stdlib.h>
 
-int* find_repeating_element(int arr[], int n, int* size) {
+/* // Time Complexity: O(n^2)
+int* find_repeating_element(int arr[], int n, int* size) 
+{
     int* array = (int*)malloc(sizeof(int) * n);
 
     for (int i=0; i<n-1; i++)
@@ -37,6 +39,29 @@ int* find_repeating_element(int arr[], int n, int* size) {
     array = (int*)realloc(array, sizeof(int)* (*size));
     return array;
 }
+*/
+
+int* find_repeating_element(int arr[], int n, int* size)
+{
+    int* result = (int*)malloc(sizeof(int) * n);
+    int hash[100] = {-1};
+    *size = 0;
+
+    for (int i=0; i<n; i++)
+    {
+        hash[arr[i]]++;
+    }
+
+    for (int i=0; i<100; i++)
+    {
+        if (hash[i] > 0)
+        {
+            result[(*size)++] = i;
+        }
+    }
+
+    return result;
+}
 
 int main() {
     int arr[] = {4,3,4,3,4,4,4,3,3};
@@ -49,5 +74,7 @@ int main() {
     {
         printf("Repeating element %d\n", result[i]);
     }
+
+    free(result);
     return 0;
 }

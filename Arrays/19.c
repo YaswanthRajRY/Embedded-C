@@ -7,46 +7,17 @@ consecutive order.
 (e.g.: I/P: [1, 9, 3, 10, 4, 20, 2]; O/P: [1, 2, 3, 4] )
 */
 #include <stdio.h>
+#include <stdlib.h>
 
-void swap(int* a, int* b)
+ // Time Complexity: O(n logn)
+int compare(const void* a, const void *b)
 {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
-
-int partition(int arr[], int left, int right)
-{
-    int piviot_value = arr[right];
-    int i = left;
-    
-    for (int j=left; j<right; j++)
-    {
-        if (arr[j] <= piviot_value)
-        {
-            swap(&arr[i], &arr[j]);
-            i++;
-        }
-    }
-    swap(&arr[i], &arr[right]);
-
-    return i;
-}
-
-void quickSort(int arr[], int left, int right)
-{
-    if (left < right)
-    {
-        int piviot_index = partition(arr, left, right);
-
-        quickSort(arr, left, piviot_index - 1);
-        quickSort(arr, piviot_index + 1, right);
-    }
+    return *(int*)a - *(int*)b;
 }
 
 int findLongestSubseq(int arr[], int size)
 {
-    quickSort(arr, 0, size-1);
+    qsort(arr, size, sizeof(int), compare);
 
     int start = 0;
     int count = 0;

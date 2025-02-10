@@ -8,6 +8,7 @@ successor.
 */
 #include <stdio.h>
 
+ // Time Complexity: O(n)
 void findPeakElement(int arr[], int size)
 {
     if (arr[0] >= arr[1])

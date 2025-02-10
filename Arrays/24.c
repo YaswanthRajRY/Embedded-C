@@ -7,8 +7,10 @@ pair's numbers is divisible by a specific number, k.
 (e.g.: I/P: [9, 7, 5, -3], k=6; O/P: True) 
 */
 #include <stdio.h>
+#include <stdlib.h>
 
-int div(int arr[], int size, int k)
+/* // Time Complexity: O(n^2)
+int canPair(int arr[], int size, int k)
 {
     int track[size];
     int count = 0;
@@ -17,7 +19,7 @@ int div(int arr[], int size, int k)
     {
         track[i] = -1;
     }
-
+    
     for (int i=0; i<size-1; i++)
     {
         for (int j = i+1; j<size; j++)
@@ -29,8 +31,34 @@ int div(int arr[], int size, int k)
             }
         }
     }
-
+    
     return (count == size/2);
+}
+*/
+ // Time Complexity: O(n)
+int canPair(int arr[], int size, int k)
+{
+    int* freq = (int*)calloc(k, sizeof(int));
+
+    for (int i=0; i<size; i++)
+    {
+        int num = arr[i] % k;
+        if (num < 0)
+            num += k;
+        freq[num]++;
+    }
+
+    if (freq[0] % 2 != 0)
+        return 0;
+    
+    for (int i=1; i<k/2; i++)
+    {
+        if (freq[i] != freq[k - i])
+            return 0;
+    }
+
+    free(freq);
+    return 1;
 }
 
 int main()
@@ -39,13 +67,13 @@ int main()
     int size = sizeof(arr)/sizeof(arr[0]);
     int k = 6;
 
-    if (div(arr, size, k))
+    if (canPair(arr, size, k))
     {
-        printf("True\n");
+        printf("True");
     }
     else
     {
-        printf("False\n");
+        printf("False");
     }
 
     return 0;

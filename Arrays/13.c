@@ -10,45 +10,45 @@ single array that remains sorted.
 #include<stdio.h>
 #include<stdlib.h>
 
-void mergeArr(int* a, int* a1, int* a2, int s1, int s2 )
+// Time Complexity: O(n+m)
+int* mergeArr(int arr1[], int len1, int arr2[], int len2, int* returnSize)
 {
-    for (int i=0; i<s1; i++)
-    {
-        *(a+i) = *(a1+i);
-    }
-    for (int i=0; i<s2; i++)
-    {
-        *(a+s1+i) = *(a2+i);
-    }
-}
+    int* result = (int*)malloc(sizeof(int) * (len1 + len2));
+    *returnSize = 0;
+    int i = 0;
+    int j = 0;
 
-void printArr(int* arr, int size)
-{
-    for (int i=0; i<size; i++)
+    while (i < len1 && j < len2)
     {
-        printf("%d ",arr[i]);
+        result[(*returnSize)++] = (arr1[i] < arr2[j]) ? arr1[i++] : arr2[j++];
     }
-    printf("\n");
-}
 
-void sortArr(int arr)
-{
+    while (i < len1)
+    {
+        result[(*returnSize)++] = arr1[i++];
+    }
 
+    while (j < len2)
+    {
+        result[(*returnSize)++] = arr2[j++];
+    }
+
+    return result;
 }
 
 int main()
 {
     int arr_A[] = {1,3,5};
     int arr_B[] = {2,4,6};
-
     int size_A = sizeof(arr_A) / sizeof(arr_A[0]);
     int size_B = sizeof(arr_B) / sizeof(arr_B[0]);
-    int Totalsize = size_A + size_B;
-    int arr[Totalsize];
 
-    mergeArr(arr, arr_A, arr_B, size_A, size_B);
-    sortArr(arr);
-    printArr(arr, Totalsize);
+    int returnSize;
+
+    int* res = mergeArr(arr_A, size_A, arr_B, size_B, &returnSize);
+
+    for (int i=0; i<returnSize; i++)
+        printf("%d ", res[i]);
      
     return 0;
 }

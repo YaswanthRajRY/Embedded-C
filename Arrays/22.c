@@ -7,8 +7,10 @@ number at that index.
 (e.g.: I/P: [1,2,3,4]; O/P: [24,12,8,6])
 */
 #include <stdio.h>
+#include <stdlib.h>
 
-void product(int arr[], int size)
+/* // Time Complexity: O(n)
+int product(int arr[], int size)
 {
     int product = 1;
 
@@ -21,6 +23,31 @@ void product(int arr[], int size)
     {
         arr[i] = product / arr[i];
     }
+
+    return arr;
+}
+*/
+
+ // without division
+ // Time Complexity: O(n)
+int* product(int arr[], int size)
+{
+    int *prefix = (int*)malloc(sizeof(int) * size);
+    prefix[0] = 1;
+
+    for (int i=1; i<size; i++)
+    {
+        prefix[i] = prefix[i - 1] * arr[i - 1];
+    }
+
+    int suffix = 1;
+    for (int i=size-1; i>=0; i--)
+    {
+        prefix[i] = prefix[i] * suffix;
+        suffix = suffix * arr[i];
+    }
+
+    return prefix;
 }
 
 int main()
@@ -28,12 +55,13 @@ int main()
     int arr[] = {1,2,3,4};
     int size = sizeof(arr)/sizeof(arr[0]);
 
-    product(arr, size);
+    int* res = product(arr, size);
 
     for (int i=0; i<size; i++)
     {
-        printf("%d ", arr[i]);
+        printf("%d ", res[i]);
     }
 
+    free(res);
     return 0;
 }

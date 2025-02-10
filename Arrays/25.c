@@ -8,10 +8,11 @@ sum.
 */
 #include <stdio.h>
 
+ // Time Complexity: O(n)
 void findSmallestSum(int arr[], int size)
 {
     int sum = 0;
-    int small = 0xffffffff;
+    int small = __INT_MAX__;
 
     for (int i=0; i<size; i++)
     {
@@ -33,7 +34,7 @@ void findSmallestSum(int arr[], int size)
 
 int main()
 {
-    int arr[] = {3,1,-4,0,3};
+    int arr[] = {3,1,-4,0,3,-1};
     int size = sizeof(arr)/sizeof(arr[0]);
 
     findSmallestSum(arr, size);

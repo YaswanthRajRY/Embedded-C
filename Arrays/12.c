@@ -9,6 +9,7 @@ the relative order of the non-zero numbers remains unchanged.
 
 #include <stdio.h>
 
+/*// Time Complexity: O(n^2)
 void swap(int* arr, int n)
 {
     int temp = *(arr+n); 
@@ -27,6 +28,25 @@ void reorderArr(int* arr, int size)
         {
             swap(arr,i);
         }
+    }
+}
+*/
+
+ // Time Complexity: O(n)
+void reorderArr(int* arr, int size)
+{
+    int index = size-1; 
+    for (int i = size-1; i>=0; i--)
+    {
+        if (arr[i] != 0)
+        {
+            arr[index--] = arr[i];
+        }
+    }
+
+    while (index >= 0)
+    {
+        arr[index--] = 0;
     }
 }
 

@@ -9,6 +9,7 @@ to the sum of all elements to its right.
 */
 #include <stdio.h>
 
+ // Time Complexity: O(n)
 int findEquilibriumIndex(int arr[], int size)
 {
     int sum = 0;

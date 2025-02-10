@@ -8,6 +8,7 @@ exists any subarray that sums up to zero.
 */
 #include <stdio.h>
 
+ // Time Complexity: O(n)
 int subArraywithZero(int arr[], int size)
 {
     int hash[100] = {0};

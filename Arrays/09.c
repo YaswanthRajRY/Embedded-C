@@ -9,7 +9,8 @@ they reach the end, for a specified number of steps.
 
 #include <stdio.h>
 
-void rotate(int arr[], int len, int n)
+/*// Time Complexity: O(nm);
+void rotateRight(int arr[], int len, int n)
 {    
     while(n--)
     {
@@ -21,13 +22,37 @@ void rotate(int arr[], int len, int n)
         arr[0] = temp;
     }
 }
+*/
+
+ // Time Complexity: O(m)
+void reverseArray(int arr[], int l, int r)
+{
+    while (l<r)
+    {
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+
+        l++;
+        r--;
+    }
+}
+
+void rotateRight(int arr[], int len, int n)
+{    
+    reverseArray(arr, 0, len-1);
+    reverseArray(arr, n, len-1);
+    reverseArray(arr, 0, n-1);
+}
 
 int main()
 {
     int arr[] = {1,2,3,4,5};
-    int n = 2;
     int len = sizeof(arr) / sizeof(arr[0]);
-    rotate(arr, len, n);
+    int n = 2;
+
+    rotateRight(arr, len, n);
+
     for(int i=0; i<len; i++)
     {
         printf("%d ",arr[i]);

@@ -7,10 +7,14 @@ WTD: Sort the array and retrieve the kth largest and kth smallest numbers.
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
-void sortAsc (int *arr, int n)
+/* // Time Complexity: O(n^2)
+int* findMinMax (int *arr, int n, int num)
 {
+    int* result = (int*)malloc(sizeof(int) * n);
     int swapFlag;
+
     for (int i=0; i < n-1; i++)
     {
         swapFlag = 0;
@@ -26,24 +30,43 @@ void sortAsc (int *arr, int n)
 
         }
         if (swapFlag == 0)
-            break;
+        break;
     }
+
+    result[0] = (num+1 >= 0) ? arr[num-1] : -1;
+    result[1] = (num+1 < n) ? arr[num+1] : -1;
+
+    return result;
+}
+*/
+
+int compare(const void* a, const void* b)
+{
+    return *(int*)a - *(int*)b;
+}
+
+ // Time Complexity: O(n^2)
+int* findMinMax (int *arr, int n, int num)
+{
+    int* result = (int*)malloc(sizeof(int) * n);
+
+    qsort(arr, n, sizeof(int), compare);
+
+    result[0] = (num+1 >= 0) ? arr[num-1] : -1;
+    result[1] = (num+1 < n) ? arr[num+1] : -1;
+
+    return result;
 }
 
 int main()
 {
     int arr[] = {7, 10, 4, 3, 20, 15};
-    int num = 3;
     int size = sizeof(arr) / sizeof(arr[0]);
+    int num = 3;
 
-    sortAsc(arr, size);
+    int* res = findMinMax(arr, size, num);
 
-    for (int i=0; i<size; i++)
-    {
-        printf("%d ",arr[i]);
-    }
-
-    printf("\n%d", arr[num - 1]);
+    printf("min: %d\nmax: %d", res[0], res[1]);
 
     return 0;    
 }
